@@ -1,0 +1,19 @@
+# https://atmos.tools/quick-start/vendor-components
+apiVersion: atmos/v1
+kind: AtmosVendorConfig
+metadata:
+  name: vendor-config
+  description: Atmos vendoring manifest
+spec:
+  sources:
+    # https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/latest
+    # https://github.com/terraform-aws-modules/terraform-aws-s3-bucket
+    - component: "aws-s3-bucket"
+      source: "github.com/terraform-aws-modules/terraform-aws-s3-bucket.git///?ref={{.Version}}"
+      version: "v4.6.0"
+      targets:
+        - "components/terraform/aws-s3-bucket"
+      included_paths:
+        - "**/*.tf"
+        - "**/modules/**"
+        - "**/wrappers/**"

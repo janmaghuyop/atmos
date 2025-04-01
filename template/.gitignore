@@ -1,0 +1,13 @@
+.DS_Store
+
+# https://github.com/slalombuild/terraform-atmos-accelerator/blob/main/.gitignore
+.atmos/*
+.terraform
+.terraform.lock.hcl
+terraform.tfstate.d
+*.planfile
+
+# Atmos generated files
+*.tf.json
+**/backend.tf
+**/*.tfvars.json

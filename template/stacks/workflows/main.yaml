@@ -1,0 +1,21 @@
+# https://atmos.tools/core-concepts/workflows/
+stack: &stack
+  stack: acme-tenant-env-stage
+workflows:
+  init:
+    <<: *stack
+    steps:
+      - command: terraform init aws-s3-bucket/test
+  plan:
+    <<: *stack
+    steps:
+      - command: terraform plan aws-s3-bucket/test
+  apply:
+    <<: *stack
+    steps:
+      - command: terraform plan aws-s3-bucket/test -auto-approve
+  destroy:
+    <<: *stack
+    steps:
+      - command: echo "Nothing to destroy!"
+        type: shell

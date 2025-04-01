@@ -1,0 +1,38 @@
+# https://atmos.tools/quick-start/create-atmos-stacks
+vars:
+  namespace: acme
+  tenant: tenant
+  environment: env
+  stage: stage # us-east-1
+  tags:
+    stack: "{{ .atmos_stack }}"
+terraform:
+  # https://atmos.tools/quick-start/advanced/configure-terraform-backend/
+  # https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/
+  backend_type: local # comment after s3 bucket is created
+  # providers:
+  #   aws:
+  #     region: us-east-1
+  #     assume_role:
+  #       role_arn: "arn:aws:iam::0123456789:role/terraform"
+  # AWS S3 BACKEND
+  # backend_type: s3
+  # backend:
+  #   s3:
+  #     encrypt: true
+  #     bucket: "terraform-state-{{ .atmos_stack }}"
+  #     key: terraform.tfstate
+  #     dynamodb_table: "terraform-state-lock-{{ .atmos_stack }}"
+  #     acl: bucket-owner-full-control
+  #     region: us-east-1
+  # CLOUDFLARE R2 BACKEND
+  # backend_type: s3
+  # backend:
+  #   s3:
+  #     workspace_key_prefix: cloudflare
+  #     bucket: terraform-state
+  #     key: terraform.tfstate
+  #     endpoint: https://abcdefghijklmnopqrstuvwxyz.r2.cloudflarestorage.com
+  #     region: auto
+import:
+  - catalog/aws-s3-bucket/test
