@@ -17,3 +17,5 @@ spec:
         - "**/*.tf"
         - "**/modules/**"
         - "**/wrappers/**"
+      excluded_paths:
+        - "**/examples/**"
