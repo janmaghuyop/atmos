@@ -6,7 +6,7 @@ FROM alpine:3.21.3
 # https://developer.hashicorp.com/terraform/install
 # https://github.com/cloudposse/atmos/releases
 ARG TF_VER=1.11.3
-ARG AT_VER=1.168.0
+ARG AT_VER=1.169.0
 
 # https://releases.hashicorp.com/terraform/
 # https://github.com/cloudposse/atmos/releases
